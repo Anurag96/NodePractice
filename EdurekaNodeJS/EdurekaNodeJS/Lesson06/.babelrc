@@ -1,0 +1,5 @@
+{
+  "presets":[
+      "@babel/preset-env"  //loads babel plugins & sets babel default environment to perform transpilation
+  ]
+}

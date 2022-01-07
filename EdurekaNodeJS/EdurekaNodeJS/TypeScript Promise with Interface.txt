@@ -1,0 +1,18 @@
+interface IPlayer {
+    id: String;
+    name: String;
+    dob: String;
+    GetName(): Promise<IPlayer>;
+}
+
+class Player implements IPlayer {
+    constructor(public id: String, public name: string, public dob: string) { }
+
+    GetName(): Promise<IPlayer> {
+        let player: IPlayer = new Player("Hello", "World", '');
+
+        return new Promise<IPlayer>((resolve, reject) => {
+            resolve(player);
+        });
+    };
+}

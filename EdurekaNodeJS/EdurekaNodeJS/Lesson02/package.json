@@ -1,0 +1,19 @@
+{
+  "name": "lesson02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Demo01.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pm2": "^4.4.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Demo17.js",
+    "dev" : "nodemon Demo17.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
