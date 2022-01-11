@@ -1,4 +1,5 @@
-# History of JavaScript
+# Node.js Tutorial
+# JavaScript Background
 - Javascript was developed in 1995 in just 10 days along with JavaScript Engine and that engine was called as SpiderMonker and brower was NetEscape.
 
 # Engine to run JavaScript code
@@ -14,17 +15,18 @@ V8 was making JavaScript code into machine readable code.
 ## 1. Can we used JavaScript everywhere, like mobile, desktop, Server(Backend) etc , cross-platform?
 
 ## Solution
-```
+
   - Then they used V8 to build a RunTime environment, which will work on the machine. This platform is called Node.js
-  - Node.js is basically ASYNCHRONUS && EVENT-DRIVEN && JAVASCRIPT RUNTIME ENVIRONMENT, where you can run JavaScript code. So using Node.js, you can run JavaScript on a standalone machine, not just browser. Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
-```
+  - Node.js is basically ASYNCHRONUS && EVENT-DRIVEN && JAVASCRIPT RUNTIME ENVIRONMENT, where you can run JavaScript code. So using Node.js, you can run JavaScript on a standalone machine, not just browser.
+  - Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
+
 ### Then Question Aries ?
 ## 2. How can JavaScript be used in Mobile/Desktop ? 
 
 ## Solution
-```
+
   - Then they cameup with different framework like React, Angular, to build those application which are (cross-platform) like iOS & Android.
-```
+
 
 ### Then Question Aries ?
 ## 3. How can JavaScript be used in Server(Backend) side ? 
@@ -32,48 +34,46 @@ V8 was making JavaScript code into machine readable code.
   Idea : What if we can use HTTP Module or HTTP component inside NODE.js ?
 
 ## Solution
-```
+
 - The moment we have the http power, we can use Node.js on the server side.
 - This make Node.js as server side component.
-```
+
 
 ### Then Question Aries ?
 ## 4. Now do we have a framework to build a web application?
 
 ## Solution
-```
 - Express.js is a backend framework to build a web application on server side, where Node.js is server side runtime engine.
 - We have different frontend framework like React/Angular to build to build UI, and 
 - MongoDB on Node.js as database backend.
-```
+
 
 ### Then Question Aries ?
-## 4. What does Node.js do or has?
+## 5. What does Node.js has which provided additional functionality/Libraries?
 
 ## Solution
-    - It has NPM (Node Package Manager) which provides different libraries to build or add features.
+- It has NPM (Node Package Manager) which provides different libraries to build or add features.
+- NPM is a package manager for the JavaScript programming language maintained by npm, Inc. 
+- This provides a third-party library to use.
 
 
 # Installation Requirement
     - Visual Studio, MongoDB, Node.js
-
-
-# NPM (Node Package Manager)
-npm is a package manager for the JavaScript programming language maintained by npm, Inc. This provides a third-party library to use.
-
 # Libuv Inbuild-library
 
-### NOTE: Node.js is used for I/O intensive work, but not CPU intensive work.
-```
-So Node.js  supports NON-BLOCKING I/O and ASYNCHRONUS SINGLE THREAD PROCESSING with help of Libuv.
+### Then Question Aries ?
+## 6. What makes Node.js  supports NON-BLOCKING I/O and ASYNCHRONUS SINGLE THREAD PROCESSING ?
 
-Behind the scenes, Node.js uses external library called Libuv, which is built in C lang and has multiple thread.
-```
-```
+### So Node.js  supports NON-BLOCKING I/O and ASYNCHRONUS SINGLE THREAD PROCESSING with help of Libuv.
+
+- Behind the scenes, Node.js uses external library called Libuv, which is built in C lang and has multiple thread.
 - Libuv helps Node.js achieve ASYNCHRONUS SINGLE THREAD PROCESSING as it has multiple thread/work which has callback function and work is done parallely by single thread of Node.js. 
 - Node.js achieve NON-BLOCKING I/O as libuv provide multiple worker and i/o is never blocked.
-```
+
 ![My animated logo](./lesson5Node/public/Capture.jpg)
+
+
+### NOTE: Node.js is used for I/O intensive work, but not CPU intensive work.
 
 # Global objects
 ```
@@ -98,17 +98,15 @@ These are accessible as window's objects ex: window.console.log();
 - Every file in a Node.js application is considered as a MODULE.
 - ** The variables and functions defined in that file or that module are scoped to that module, as in they are private.
 
-   ## How to use User created Module outside the scope?
+   ## How to use UserCreated Module outside the scope?
 
     ## Solution
-    ```
-    The Module is needed to explicitly exported and make it public. 
+    
+    - The Module is needed to explicitly exported and make it public. 
     Try : console.log(module)
-
-    Every module has id,exports:{},parent,filename,children,paths.
+    - Every module has id,exports:{},parent,filename,children,paths.
     Anything added in exports will be added in {} empty object.
 
-    ```
     ![My animated logo](./lesson5Node/public/Capture2.PNG)
 
    
@@ -140,6 +138,13 @@ These are accessible as window's objects ex: window.console.log();
     - ../parentFolder/logger.js : indicates that file is in parent-folder
 
 # FILE SYSTEM 
+
+## Notes:
+- writeFile() is used to write data to file.
+- appendFile() is used to append data to file.
+- readFile() is used to read data from file.
+- open() is used to open file & r+ is read/write format specifier for file.
+- unlink() is used to detete file.
  ## Syntax:
     
 ```
@@ -256,9 +261,14 @@ app.listen(8080,() => {
 const express = require('express');
 const app = express(); // Here express is initialized 
 
+//1.Sending String to server
 app.get('/hello', function(req, res){
     res.send('Hello, world')
-    res.end();
+})
+
+//2.Sending JSON data to server
+app.get('/hello', function(req, res){
+    res.json({text:'Hello World'})
 })
 
 app.listen(8090,() => {
@@ -268,4 +278,7 @@ app.listen(8090,() => {
 http://localhost:8090/hello
 
 ```
-
+### Sending JSON data to server
+![Sending JSON data to server](./lesson5Node/public/Capture3.PNG) {
+    width: 50px;
+    }
