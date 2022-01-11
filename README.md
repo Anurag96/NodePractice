@@ -14,16 +14,17 @@ V8 was making JavaScript code into machine readable code.
 ## 1. Can we used JavaScript everywhere, like mobile, desktop, Server(Backend) etc , cross-platform?
 
 ## Solution
-
-    - Then they used V8 to build a RunTime environment, which will work on the machine. This platform is called Node.js
-    - Node.js is basically ASYNCHRONUS && EVENT-DRIVEN && JAVASCRIPT RUNTIME ENVIRONMENT, where you can run JavaScript code. So using Node.js, you can run JavaScript on a standalone machine, not just browser. Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
-
+```
+  - Then they used V8 to build a RunTime environment, which will work on the machine. This platform is called Node.js
+  - Node.js is basically ASYNCHRONUS && EVENT-DRIVEN && JAVASCRIPT RUNTIME ENVIRONMENT, where you can run JavaScript code. So using Node.js, you can run JavaScript on a standalone machine, not just browser. Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
+```
 ### Then Question Aries ?
 ## 2. How can JavaScript be used in Mobile/Desktop ? 
 
 ## Solution
-    - Then they cameup with different framework like React, Angular, to build those application which are (cross-platform) like iOS & Android.
-
+```
+  - Then they cameup with different framework like React, Angular, to build those application which are (cross-platform) like iOS & Android.
+```
 
 ### Then Question Aries ?
 ## 3. How can JavaScript be used in Server(Backend) side ? 
@@ -31,17 +32,20 @@ V8 was making JavaScript code into machine readable code.
   Idea : What if we can use HTTP Module or HTTP component inside NODE.js ?
 
 ## Solution
-     - The moment we have the http power, we can use Node.js on the server side.
-     - This make Node.js as server side component.
-
+```
+- The moment we have the http power, we can use Node.js on the server side.
+- This make Node.js as server side component.
+```
 
 ### Then Question Aries ?
 ## 4. Now do we have a framework to build a web application?
 
 ## Solution
-    -  Express.js is a backend framework to build a web application on server side, where Node.js is server side runtime engine.
-    - We have different frontend framework like React/Angular to build to build UI, and 
-    - MongoDB on Node.js as database backend.
+```
+- Express.js is a backend framework to build a web application on server side, where Node.js is server side runtime engine.
+- We have different frontend framework like React/Angular to build to build UI, and 
+- MongoDB on Node.js as database backend.
+```
 
 ### Then Question Aries ?
 ## 4. What does Node.js do or has?
@@ -71,14 +75,15 @@ http.createServer((req,res)=>{})
 ### Libuv Inbuild-library
 
 ### NOTE: Node.js is used for I/O intensive work, but not CPU intensive work.
-
+```
 So Node.js  supports NON-BLOCKING I/O and ASYNCHRONUS SINGLE THREAD PROCESSING with help of Libuv.
 
 Behind the scenes, Node.js uses external library called Libuv, which is built in C lang and has multiple thread.
-
+```
+```
 - Libuv helps Node.js achieve ASYNCHRONUS SINGLE THREAD PROCESSING as it has multiple thread/work which has callback function and work is done parallely by single thread of Node.js. 
 - Node.js achieve NON-BLOCKING I/O as libuv provide multiple worker and i/o is never blocked.
-
+```
 ![My animated logo](./Capture.jpg)
 
 
