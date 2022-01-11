@@ -58,21 +58,10 @@ V8 was making JavaScript code into machine readable code.
     - Visual Studio, MongoDB, Node.js
 
 
-## HTTP module
-Node.js has multiple modules available, there are inbuild module and user created module, which help to achieve the idea of modularity and flexibility, where different components are working together.
+# NPM (Node Package Manager)
+npm is a package manager for the JavaScript programming language maintained by npm, Inc. This provides a third-party library to use.
 
-HTTP Module - inbult Module.
-```
-Here createServer() is function available in Module called HTTP module, which is responsible for creating Server.
-Syntax: createServer((req,res)=>{})
-
-
-Syntax: 
-const http = require('http')
-http.createServer((req,res)=>{})
-
-```
-### Libuv Inbuild-library
+# Libuv Inbuild-library
 
 ### NOTE: Node.js is used for I/O intensive work, but not CPU intensive work.
 ```
@@ -84,14 +73,75 @@ Behind the scenes, Node.js uses external library called Libuv, which is built in
 - Libuv helps Node.js achieve ASYNCHRONUS SINGLE THREAD PROCESSING as it has multiple thread/work which has callback function and work is done parallely by single thread of Node.js. 
 - Node.js achieve NON-BLOCKING I/O as libuv provide multiple worker and i/o is never blocked.
 ```
-![My animated logo](./Capture.jpg)
+![My animated logo](./lesson5Node/public/Capture.jpg)
+
+# Global objects
+```
+console.log();
+
+setTimeout();
+clearTimeout();
+
+setInterval();
+clearInterval();
+```
+These are the global object provided by JavaScript, that can run in server,frontend and browser.
+
+These are accessible as window's objects ex: window.console.log();
+
+### Note: But in Node.js we don't have WINDOW object rather we have GLOBAL object
+
+- In Node.js we have these accessible as window's objects ex: global.console.log();
+
+# MODULE 
+
+- Every file in a Node.js application is considered as a MODULE.
+- ** The variables and functions defined in that file or that module are scoped to that module, as in they are private.
+
+   ## How to use User created Module outside the scope?
+
+    ## Solution
+    ```
+    The Module is needed to explicitly exported and make it public. 
+    Try : console.log(module)
+
+    Every module has id,exports:{},parent,filename,children,paths.
+    Anything added in exports will be added in {} empty object.
+
+    ```
+    ![My animated logo](./lesson5Node/public/Capture2.PNG)
+
+   
+    ## Syntax:
+     ```
+     >> logger.js
+
+    function log(message){
+        console.log(message);
+    }
+    module.exports.log=log;
+
+    >> app.js
+
+    const logger = require('log');
+    console.log(logger);
+     logger.log('Hello, you module has been exported')
+
+     >> OUTPUT : 
+        {log:[Function:log]}  
+        Hello, you module has been exported
+    ```
 
 
-### NPM (Node Package Manager)
-npm is a package manager for the JavaScript programming language maintained by npm, Inc. This provides a third-party library to use.
 
-### FILE SYSTEM 
+# PATH Definers
+    - ./logger.js : indicates current folder
+    - ./subFolder/logger.js : indicates that file is in sub-folder
+    - ../parentFolder/logger.js : indicates that file is in parent-folder
 
+# FILE SYSTEM 
+ ## Syntax:
+    
 ```
 // writeFile() is used to write data to file.
 fs.writeFile('hello.txt','This is Anurag',(err) => {
@@ -129,3 +179,93 @@ fs.unlink('hello.txt',(err)=>{
     else console.log("Data Deleted/Unlink successfully")
 })
 ```
+
+
+# HTTP module
+Node.js has multiple modules available, there are inbuild module and user created module, which help to achieve the idea of modularity and flexibility, where different components are working together.
+
+HTTP Module - inbult Module.
+
+- Here createServer() is function available in Module called HTTP module, which is responsible for creating Server.
+
+ ## Syntax:
+
+```
+      createServer((req,res)=>{})
+
+        const http = require('http')
+        http.createServer((req,res)=>{
+            res.write('Hello World');
+            res.end()
+        }).listen(3000)
+
+```
+
+# ExpressJS Framework
+
+Express is a simple framework build on the top of Node.js. 
+
+![My animated logo](./lesson5Node/public/img1.jpg)
+
+### Note : npm init -y  this command help to create a default package manager file called package.json
+
+### Package required :
+```
+npm install express 
+This command install express in node_modules
+```
+### 1. Express.js for Static Public File Hosting
+
+### Notes :
+- use() function we is used to define any middleware.
+- express.static() is middleware, comes with express.js , which hold the path to the static public hosting files.
+- Here express.js loads index.html to the server and displays the it on server.
+- Static Hosting means that they are publicly accessible.
+```
+>index.js
+
+const express = require('express');
+const app = express(); // Here express is initialized 
+
+app.use(express.static('public')) // Here express automatically loads the public paths
+
+app.listen(8080,() => {
+    console.log('listening on port 8080')
+});
+
+>public >index.html
+
+<html> 
+    <body>
+        <h1>Welcome</h1>
+    </body>
+</html>
+```
+
+### 2. Express.js for creating EndPoint / API
+
+### Notes :
+- get() method  tell the type of API request is made, comes with express.js. 
+- It takes two parameters PATH and a CALLBACK function.
+- It is a GET request endPoint, which fetch data from path mentioned and then does the CALLBACK.
+
+
+```
+>index.js
+
+const express = require('express');
+const app = express(); // Here express is initialized 
+
+app.get('/hello', function(req, res){
+    res.send('Hello, world')
+    res.end();
+})
+
+app.listen(8090,() => {
+    console.log('listening on port 8090')
+});
+
+http://localhost:8090/hello
+
+```
+
