@@ -1,5 +1,5 @@
 # History of JavaScript
-- Javascript was started in early 1995 and was developed in 10days along with JavaScript Engine and that engine was called as SpiderMonker and brower was NetEscape.
+- Javascript was developed in 1995 in just 10 days along with JavaScript Engine and that engine was called as SpiderMonker and brower was NetEscape.
 
 # Engine to run JavaScript code
 - Later Chrome cameup with a better JavaScript engine called V8 engine and  that became popular.
