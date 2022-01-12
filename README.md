@@ -352,8 +352,6 @@ http://localhost:8090/person?name=anurag&age=25
 
 ![My animated logo](./lesson5Node/public/Capture10.PNG)
 
-![My animated logo](./lesson5Node/public/Capture11.PNG)
-
 ```
 >index.js
 
@@ -375,6 +373,12 @@ app.listen(8091,() => {
 // http://localhost:8090/school/MIT/Boston
 
 ```
+
+![My animated logo](./lesson5Node/public/Capture11.PNG)
+
+- Here the data is received from client directly from  Query Params (res.params) on server.
+
+
 
 # B. REQUEST BODY
 ### Sending data in Request Object through REQUEST BODY
