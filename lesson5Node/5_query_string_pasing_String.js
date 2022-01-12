@@ -4,7 +4,7 @@ const app = express();
 
 app.get('/', function(req, res){
     
-    res.json({text:"Hello World"});
+    res.send('Welcome to Query String')
 })
 
 app.listen(8090,() => {

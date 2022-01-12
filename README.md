@@ -210,7 +210,7 @@ HTTP Module - inbult Module.
 
 Express is a simple framework build on the top of Node.js. 
 
-![My animated logo](./lesson5Node/public/img1.jpg)
+![My animated logo](./lesson5Node/public/Capture6.PNG)
 
 ### Note : npm init -y  this command help to create a default package manager file called package.json
 
@@ -278,7 +278,108 @@ app.listen(8090,() => {
 http://localhost:8090/hello
 
 ```
-### Sending JSON data to server
-![Sending JSON data to server](./lesson5Node/public/Capture3.PNG) {
-    width: 50px;
-    }
+# SENDING DATA IN REQUEST OBJECTS
+## Request Object
+- When we send Request Object in the login path, Request object can have REQUEST LINE,HEADERS, BODY
+
+![My animated logo](./lesson5Node/public/Capture4.PNG)
+
+- A Request Object has following 
+   - Method's request type like GET,POST,PUT,DELETE
+   - Header retrives cookies,auth or token 
+   - REQUEST BODY : Body retrives Data.
+   - REQUEST URL : URL retrives Query String & Params
+
+![My animated logo](./lesson5Node/public/Capture7.PNG)
+# A. REQUEST URL
+## 1. QUERY STRING
+### Sending data in Request Object through QUERY STRING
+- In the below example ?name=anurag&age=25 is a QUERY STRING
+- Where '&' differentiate between two variables.
+
+
+![My animated logo](./lesson5Node/public/Capture5.PNG)
+
+
+### How to send data in Request Object
+- req.query is an inbuild property of Express.js.
+- Here Express.js access Request Object from the URL using req.query.
+- req.query is mmostly used in GET query.
+
+![My animated logo](./lesson5Node/public/Capture8.PNG)
+
+```
+>index.js
+
+const express = require('express');
+const app = express(); // Here express is initialized 
+
+//2.Sending JSON data to server
+app.get('/person', function(req, res){
+
+    let personName=req.query.name;
+    let age=req.query.age;
+    res.json({name:personName,age})
+})
+
+app.listen(8090,() => {
+    console.log('listening on port 8090')
+});
+
+http://localhost:8090/person?name=anurag&age=25
+
+```
+![My animated logo](./lesson5Node/public/Capture13.PNG)
+
+- Here the data is received from client directly from  Query String (res.query) on server.
+## 2.  QUERY PARAMS / URL Params / Request Parameters 
+### Sending data in Request Object through QUERY PARAMS
+
+- https://localhost/home/anurag/25 : URL + URL Params
+- In the above example /anurag/25 is a URL PARAMS
+- We have to predefined in the server before hand, the type of parameter format.
+    - Ex: /anurag/25 => /:name/:age
+    - The information related to /:name/:age get stored query.params
+    - query.params return the data in JSON format.
+    - Here Express.js matches the Server Path /home/:name/:age with home/anurag/25 & assign values accordingly.
+
+![My animated logo](./lesson5Node/public/Capture9.PNG)
+
+### How to send data in Request Object in QUERY PARAMS URL
+- req.params is an inbuild property of Express.js.
+- Here Express.js access Request Object from the URL using req.params.
+- req.params is mostly used in GET query.
+
+![My animated logo](./lesson5Node/public/Capture10.PNG)
+
+![My animated logo](./lesson5Node/public/Capture11.PNG)
+
+```
+>index.js
+
+const express = require('express');
+const app = express(); // Here express is initialized 
+
+//2.Sending JSON data to server
+app.get('/school/:name/:city', function(req, res){
+  
+    let nameStudent=req.params.name;
+    let cityName=req.params.city;
+    res.json({name:nameStudent,city:cityName});
+})
+
+app.listen(8091,() => {
+    console.log('listening on port 8091')
+});
+
+// http://localhost:8090/school/MIT/Boston
+
+```
+
+# B. REQUEST BODY
+### Sending data in Request Object through REQUEST BODY
+
+
+![My animated logo](./lesson5Node/public/Capture14.PNG)
+
+![My animated logo](./lesson5Node/public/Capture12.PNG)
