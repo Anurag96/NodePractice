@@ -278,6 +278,8 @@ app.listen(8090,() => {
 http://localhost:8090/hello
 
 ```
+
+- NOTE : The json() method of the Response interface takes a Response stream and reads it to completion. It returns a promise which resolves with the result of parsing the body text as JSON Ex: response.json()
 # SENDING DATA IN REQUEST OBJECTS
 ## Request Object
 - When we send Request Object in the login path, Request object can have REQUEST LINE,HEADERS, BODY
@@ -383,7 +385,34 @@ app.listen(8091,() => {
 # B. REQUEST BODY
 ### Sending data in Request Object through REQUEST BODY
 
+![My animated logo](./lesson5Node/public/Capture15.PNG)
+
+- We can send data in body.
+- The data is hidden in body, can't view in the URL.
+- method='post' triggers the post method and data is sent to body from UI, and
+- action='' is the Endpoint address is given.
+- JSON data can be sent to body.
+
 
 ![My animated logo](./lesson5Node/public/Capture14.PNG)
 
+
+- Currently in Express.js 'req.body' doesn't parse the body so instead of that we use a middleware.
+- bodyParser is the middleware that parse the JSON data, and it has two format.
+    - bodyParser.urlencoded() can used for Form Data
+    - bodyParser.json() can used for JSON Data.
+- With help of bodyParser, req.body will fetch the data.
+- bodyParser comes with Express.js, so we need to require('bodyParser')
+
 ![My animated logo](./lesson5Node/public/Capture12.PNG)
+
+# We have learn 3 ways of sending data to the server
+
+## QUERY STRING
+![My animated logo](./lesson5Node/public/Capture17.PNG)
+## QUERY PARAMS
+![My animated logo](./lesson5Node/public/Capture16.PNG)
+## BODY Parser
+![My animated logo](./lesson5Node/public/Capture18.PNG)
+![My animated logo](./lesson5Node/public/Capture19.PNG)
+- Add method = 'POST', in form after action.
