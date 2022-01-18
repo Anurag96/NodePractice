@@ -406,6 +406,81 @@ app.listen(8091,() => {
 
 ![My animated logo](./lesson5Node/public/Capture12.PNG)
 
+
+## POST Request BODY
+- POST Request allow the data to be sent along with the request in form of REQUEST BODY.
+- (data + request=>BODY REQUEST)
+- Whenever a POST Request is made , it means that ,the server that receives that POST request saves the data.
+
+### Not ever Request Method contains a body. ex: GET Request don't contain a body.
+
+## body-parser
+- Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+- As req.body's shape is based on user-controlled input, all properties and values in this object are untrusted and should be validated before trusting.
+### Express route-specific
+This example demonstrates adding body parsers specifically to the routes that need them. 
+In general, this is the most recommended way to use body-parser with Express.
+
+```
+const express = require('express');
+const server = express();
+var bodyParser = require('body-parser')
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+server.post('/login/1',urlencodedParser,(req,res)=>{
+  res.send('Welcome '+req.body.name)
+  console.log(req.body)
+})
+server.post('/login/2',jsonParser,(req,res)=>{
+  res.send('Welcome '+req.body.name)
+  console.log(req.body)
+})
+server.listen(8070,()=>{ console.log('The Server is live on 8070')})
+
+```
+
+### Express/Connect top-level generic
+  - This example demonstrates adding a generic JSON and URL-encoded parser as a top-level middleware,
+    which will parse the bodies of all incoming requests. This is the simplest setup.
+ 
+```
+const express = require('express');
+const server = express();
+var bodyParser = require('body-parser')
+
+server.use(express.json());         // to support JSON bodies
+server.use(express.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
+//OR
+
+// parse application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+server.use(bodyParser.json())
+
+server.post('/login/3',(req,res)=>{
+  res.send('Welcome '+req.body.name)
+  console.log(req.body)
+})
+server.post('/login/4',(req,res)=>{
+  res.send('create user in req.body when sending JSON data')
+  console.log(req.body)
+})
+
+server.listen(8070,()=>{ console.log('The Server is live on 8070')})
+
+```
+
+![My animated logo](./lesson5Node/public/Capture20.PNG)
+![My animated logo](./lesson5Node/public/Capture21.PNG)
+
+
 # We have learn 3 ways of sending data to the server
 
 ## QUERY STRING
