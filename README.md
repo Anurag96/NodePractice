@@ -426,15 +426,20 @@ const express = require('express');
 const server = express();
 var bodyParser = require('body-parser')
 
-// create application/json parser
+// create application/json parser using bodyParser
 var jsonParser = bodyParser.json()
-// create application/x-www-form-urlencoded parser
+// create application/x-www-form-urlencoded parser using bodyParser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// Here in Parameters, we need to pass urlencodedParser in parameter, as data passed in this post as urlencoded
 
 server.post('/login/1',urlencodedParser,(req,res)=>{
   res.send('Welcome '+req.body.name)
   console.log(req.body)
 })
+
+// Here in Parameters, we need to pass jsonParser in parameter, as data passed in this post as JSON
+
 server.post('/login/2',jsonParser,(req,res)=>{
   res.send('Welcome '+req.body.name)
   console.log(req.body)
@@ -452,22 +457,27 @@ const express = require('express');
 const server = express();
 var bodyParser = require('body-parser')
 
-server.use(express.json());         // to support JSON bodies
-server.use(express.urlencoded({     // to support URL-encoded bodies
+// parse application/json using EXPRESS
+server.use(express.json()); 
+parse application/x-www-form-urlencoded using EXPRESS
+server.use(express.urlencoded({    
   extended: true
 })); 
 
-//OR
+(OR)
 
 // parse application/x-www-form-urlencoded
 server.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 server.use(bodyParser.json())
 
+// pass data as URLencoded
 server.post('/login/3',(req,res)=>{
   res.send('Welcome '+req.body.name)
   console.log(req.body)
 })
+
+// pass data as JSON
 server.post('/login/4',(req,res)=>{
   res.send('create user in req.body when sending JSON data')
   console.log(req.body)
@@ -476,8 +486,12 @@ server.post('/login/4',(req,res)=>{
 server.listen(8070,()=>{ console.log('The Server is live on 8070')})
 
 ```
+- pass data as JSON
 
 ![My animated logo](./lesson5Node/public/Capture20.PNG)
+
+- pass data as Urlencoded
+
 ![My animated logo](./lesson5Node/public/Capture21.PNG)
 
 
