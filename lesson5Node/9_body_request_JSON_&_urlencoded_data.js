@@ -28,10 +28,10 @@ server.post('/login/2',jsonParser,(req,res)=>{
     which will parse the bodies of all incoming requests. This is the simplest setup.
  */
 
-server.use(express.json());         // to support JSON bodies
-server.use(express.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
+// server.use(express.json());         // to support JSON bodies
+// server.use(express.urlencoded({     // to support URL-encoded bodies
+//   extended: true
+// })); 
 
 //OR
 
@@ -49,4 +49,5 @@ server.post('/login/4',(req,res)=>{
   console.log(req.body)
 })
 
-server.listen(8070,()=>{ console.log('The Server is live on 8070')})
+server.post()
+server.listen(8071,()=>{ console.log('The Server is live on 8070')})

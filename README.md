@@ -505,3 +505,23 @@ server.listen(8070,()=>{ console.log('The Server is live on 8070')})
 ![My animated logo](./lesson5Node/public/Capture18.PNG)
 ![My animated logo](./lesson5Node/public/Capture19.PNG)
 - Add method = 'POST', in form after action.
+
+# REST API
+
+- What is a REST API?
+    - REST : Respresentational State Transfer
+        - REST is architectural style of web.
+        - A standard set of guideline by which we can structure and create API's
+    - API : Application Programming Interface
+    - They make use of HTTP methods.
+        - GET - Used to *retrive data from the server
+        - POST - Used to *send data to the server.
+        - PUT - Used to *update data.
+        - DELETE - Used to *delete data.
+
+    - REST Properties : The make use of HTTP Status codes
+        - 200 means OK
+        - 404 means resource not found
+        - 500 means server error
+
+
