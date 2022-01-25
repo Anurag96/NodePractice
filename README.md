@@ -77,6 +77,13 @@ V8 was making JavaScript code into machine readable code.
 
 # Global objects
 
+- These are the global object provided by JavaScript, that can run in server,frontend and browser.
+- These are accessible as window's objects provided by JavaScript ex: window.console.log();
+- In browser the global object is `window`, but in Node the global object is `global`
+- Try : console.log(global);
+
+### OUTPUT:
+
 ![My animated logo](./lesson5Node/public/Capture22.PNG)
 
 ```
@@ -95,8 +102,8 @@ Example:
 
 console.log(global);
 
-console.log(__dirname); //This gets the absoulute path of the folder
-console.log(__filename); //This gets the absoulute path of the file 
+** console.log(__dirname); //This gets the absoulute path of the folder
+** console.log(__filename); //This gets the absoulute path of the file 
 
 setTimeout(()=>{
     console.log('in the timeout');
@@ -105,10 +112,6 @@ setTimeout(()=>{
 
 const int = setInterval(()=>{console.log('in the interval')},1000);
 ```
-- These are the global object provided by JavaScript, that can run in server,frontend and browser.
-- These are accessible as window's objects provided by JavaScript ex: window.console.log();
-- In browser the global object is `window`, but in Node the global object is `global`
-
 ### Note: But in Node.js we don't have WINDOW object rather we have GLOBAL object
 
 - In Node.js we have these accessible as window's objects ex: global.console.log();
@@ -117,20 +120,26 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
 
 - Every file in a Node.js application is considered as a `MODULE`.
 - ** The `variables and functions` defined in that file or that `module` are scoped to that module, as in they are `private`.
-- Require(./..) finds the module to be exported and run the file.
-   ## How to use UserCreated Module outside the scope?
 
-    ## Solution
-    
-    - The Module is needed to explicitly exported and make it public. 
     - Try : console.log(module)
     - Every module has id,exports:{},parent,filename,children,paths.
     - Anything added in exports will be added in {} empty object.
 
     ![My animated logo](./lesson5Node/public/Capture2.PNG)
 
+
+   ## How to use UserCreated Module outside the scope?
+
+    ## Solution
+    
+    - The Module is needed to explicitly exported and make it public. 
+  
+    ### Require() : 
+    - require(./..) finds the module to be exported and run the file.
+    - module.exports=people; //Single method
+    - module.exports= { people : people, ages : ages} ; //Multiple method
    
-    ## Syntax for exporting single method:
+    ## Example for exporting user defined single method:
      ```
      
     >> 11_module_1.js
@@ -150,7 +159,7 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
         This from second file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
     ```
 
-   ## Syntax for exporting Multiple methods:
+   ## Example for exporting user defined Multiple methods:
      ```
      
     >> 11_module_1.js

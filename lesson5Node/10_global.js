@@ -12,5 +12,5 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
 
 console.log(__dirname); //This gets the absoulute path of the folder
 console.log(__filename); //This gets the absoulute path of the file 
-console.log(module);
-
+console.log(module); // This get method & function listed in MODULE 
+console.log(global); // This get method & function listed in GLOBAL 
