@@ -153,7 +153,7 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
         const xyz = require('./11_module_1');
         console.log('This from second file : '+xyz); //This return an empty object.
      
-     >> OUTPUT : 
+     >> OUTPUT : node 11_module_2.js
      
         This is from 1st file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
         This from second file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
@@ -175,7 +175,7 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
         console.log(xyz);
         console.log(xyz.people,xyz.ages)
      
-     >> OUTPUT : 
+     >> OUTPUT : node 11_module_2.js
      
         This is from 1st file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
         { people: [ 'Anurag', 'Shreya', 'Riya', 'Neal', 'Kimmy', 'Ryan' ],
@@ -199,6 +199,8 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
     
 ```
 // writeFile() is used to write data to file.
+// It takes 3 parameters, filename| text to be written | CallBack function -> err
+
 fs.writeFile('hello.txt','This is Anurag',(err) => {
     if(err)throw err;
     else{
@@ -207,18 +209,24 @@ fs.writeFile('hello.txt','This is Anurag',(err) => {
 })
 
 // appendFile() is used to append data to file.
+// It takes 3 parameters, filename| text to be written | CallBack function -> err
+
 fs.appendFile('hello.txt',' This is second line.',(err)=>{
     if(err)throw err;
     else console.log("Data Appended successfully.")
 })
 
 // readFile() is used to read data from file.
+// It takes 2 parameters, filename | CallBack function -> err & data
+
 fs.readFile('hello.txt',(err, data)=>{
     if(err)throw err;
     else console.log("Data Read successfully : "+data.toString())
 })
 
-// open() is used to open file & r+ is read/write format specifier for file.
+// open() is used to open file & .
+// It takes 3 parameters, filename| r+ is read/write format specifier for file | CallBack function -> data & err
+
 fs.open('hello.txt','r+',(err, data) => {
     if(err){
        console.log(err);
@@ -229,6 +237,8 @@ fs.open('hello.txt','r+',(err, data) => {
 });
 
 // unlink() is used to detete file.
+// It takes 2 parameters, filename | CallBack function -> err & data
+
 fs.unlink('hello.txt',(err)=>{
     if(err)throw err;
     else console.log("Data Deleted/Unlink successfully")
