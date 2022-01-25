@@ -76,61 +76,102 @@ V8 was making JavaScript code into machine readable code.
 ### NOTE: Node.js is used for I/O intensive work, but not CPU intensive work.
 
 # Global objects
+
+![My animated logo](./lesson5Node/public/Capture22.PNG)
+
 ```
 console.log();
 
-setTimeout();
+setTimeout(); // This function gonna run it once after set timer.
 clearTimeout();
 
-setInterval();
+setInterval(); // This function gonna run every second or interval set.
 clearInterval();
-```
-These are the global object provided by JavaScript, that can run in server,frontend and browser.
 
-These are accessible as window's objects ex: window.console.log();
+```
+
+```
+Example:
+
+console.log(global);
+
+console.log(__dirname); //This gets the absoulute path of the folder
+console.log(__filename); //This gets the absoulute path of the file 
+
+setTimeout(()=>{
+    console.log('in the timeout');
+    clearInterval(int); //this clears the interval
+},2000);
+
+const int = setInterval(()=>{console.log('in the interval')},1000);
+```
+- These are the global object provided by JavaScript, that can run in server,frontend and browser.
+- These are accessible as window's objects provided by JavaScript ex: window.console.log();
+- In browser the global object is `window`, but in Node the global object is `global`
 
 ### Note: But in Node.js we don't have WINDOW object rather we have GLOBAL object
 
 - In Node.js we have these accessible as window's objects ex: global.console.log();
 
-# MODULE 
+# MODULE & Require('')
 
-- Every file in a Node.js application is considered as a MODULE.
-- ** The variables and functions defined in that file or that module are scoped to that module, as in they are private.
-
+- Every file in a Node.js application is considered as a `MODULE`.
+- ** The `variables and functions` defined in that file or that `module` are scoped to that module, as in they are `private`.
+- Require(./..) finds the module to be exported and run the file.
    ## How to use UserCreated Module outside the scope?
 
     ## Solution
     
     - The Module is needed to explicitly exported and make it public. 
-    Try : console.log(module)
+    - Try : console.log(module)
     - Every module has id,exports:{},parent,filename,children,paths.
-    Anything added in exports will be added in {} empty object.
+    - Anything added in exports will be added in {} empty object.
 
     ![My animated logo](./lesson5Node/public/Capture2.PNG)
 
    
-    ## Syntax:
+    ## Syntax for exporting single method:
      ```
-     >> logger.js
+     
+    >> 11_module_1.js
+     
+        var people = ['Anurag','Shreya','Riya','Neal','Kimmy','Ryan']
+        console.log("This is from 1st file : "+people);
+        module.exports=people;
 
-    function log(message){
-        console.log(message);
-    }
-    module.exports.log=log;
-
-    >> app.js
-
-    const logger = require('log');
-    console.log(logger);
-     logger.log('Hello, you module has been exported')
-
+    >> 11_module_2.js
+        
+        const xyz = require('./11_module_1');
+        console.log('This from second file : '+xyz); //This return an empty object.
+     
      >> OUTPUT : 
-        {log:[Function:log]}  
-        Hello, you module has been exported
+     
+        This is from 1st file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
+        This from second file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
     ```
 
+   ## Syntax for exporting Multiple methods:
+     ```
+     
+    >> 11_module_1.js
+     
+        var people = ['Anurag','Shreya','Riya','Neal','Kimmy','Ryan']
+        var ages = [26,27,22,25,27,28]
+        console.log("This is from 1st file : "+people);
+        module.exports= { people : people, ages : ages} ; // Tip : Better to use the same variable name!!
 
+    >> 11_module_2.js
+        
+        const xyz = require('./11_module_1');
+        console.log(xyz);
+        console.log(xyz.people,xyz.ages)
+     
+     >> OUTPUT : 
+     
+        This is from 1st file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
+        { people: [ 'Anurag', 'Shreya', 'Riya', 'Neal', 'Kimmy', 'Ryan' ],
+        ages: [ 26, 27, 22, 25, 27, 28 ] }
+    ```
 
 # PATH Definers
     - ./logger.js : indicates current folder
@@ -499,12 +540,25 @@ server.listen(8070,()=>{ console.log('The Server is live on 8070')})
 
 ## QUERY STRING
 ![My animated logo](./lesson5Node/public/Capture17.PNG)
+- Query strings are the data that appear in a page URL. 
+- They are appended after the URL path and preceded by a question mark. 
+- Each of them take the form of name-value pair. 
+- Since they appear in the URL, they’re not confidential. 
+- Query strings start with a question mark and each name-value pair are separated by an ampersand `&`
+- http://localhost:8050/person2?name=anurag&age=26&mail=a@gmail.com
 ## QUERY PARAMS
 ![My animated logo](./lesson5Node/public/Capture16.PNG)
+- Parameters don’t take the name-value form; they don’t need any key. Simply append the value to the URL right after the path. 
+- To prevent confusion with query strings,
+    - Make sure that parameters aren’t preceded by a question mark
+    - They are appended right after the URL path
+    - They are succeeded by query strings.
+    - http://localhost:8050/person/anurag/a@gmail.com/26
 ## BODY Parser
 ![My animated logo](./lesson5Node/public/Capture18.PNG)
 ![My animated logo](./lesson5Node/public/Capture19.PNG)
 - Add method = 'POST', in form after action.
+
 
 # REST API
 
