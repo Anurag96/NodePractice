@@ -198,6 +198,7 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
  ## Syntax:
     
 ```
+-----------------------------------------------------------------------------------------------
 // writeFile() is used to write data to file.
 // It takes 3 parameters, filename| text to be written | CallBack function -> err
 
@@ -207,7 +208,7 @@ fs.writeFile('hello.txt','This is Anurag',(err) => {
         console.log('Data was Written successfully')
     }
 })
-
+-----------------------------------------------------------------------------------------------
 // appendFile() is used to append data to file.
 // It takes 3 parameters, filename| text to be written | CallBack function -> err
 
@@ -215,7 +216,7 @@ fs.appendFile('hello.txt',' This is second line.',(err)=>{
     if(err)throw err;
     else console.log("Data Appended successfully.")
 })
-
+-----------------------------------------------------------------------------------------------
 // readFile() is used to read data from file.
 // It takes 2 parameters, filename | CallBack function -> err & data
 
@@ -223,7 +224,7 @@ fs.readFile('hello.txt',(err, data)=>{
     if(err)throw err;
     else console.log("Data Read successfully : "+data.toString())
 })
-
+-----------------------------------------------------------------------------------------------
 // open() is used to open file & .
 // It takes 3 parameters, filename| r+ is read/write format specifier for file | CallBack function -> data & err
 
@@ -235,7 +236,7 @@ fs.open('hello.txt','r+',(err, data) => {
         
     }
 });
-
+-----------------------------------------------------------------------------------------------
 // unlink() is used to detete file.
 // It takes 2 parameters, filename | CallBack function -> err & data
 
@@ -243,6 +244,7 @@ fs.unlink('hello.txt',(err)=>{
     if(err)throw err;
     else console.log("Data Deleted/Unlink successfully")
 })
+-----------------------------------------------------------------------------------------------
 ```
 
 
