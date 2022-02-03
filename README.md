@@ -19,6 +19,7 @@ V8 was making JavaScript code into machine readable code.
   - Then they used V8 to build a RunTime environment, which will work on the machine. This platform is called Node.js
   - Node.js is basically ASYNCHRONUS && EVENT-DRIVEN && JAVASCRIPT RUNTIME ENVIRONMENT, where you can run JavaScript code. So using Node.js, you can run JavaScript on a standalone machine, not just browser.
   - Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
+  - Thus we can use JavaScript on Node RunTime environment,making it available to be used in all platform like server side, client side and top of database.
 
 ### Then Question Aries ?
 ## 2. How can JavaScript be used in Mobile/Desktop ? 
@@ -26,6 +27,8 @@ V8 was making JavaScript code into machine readable code.
 ## Solution
 
   - Then they cameup with different framework like React, Angular, to build those application which are (cross-platform) like iOS & Android.
+  - This make Node.js as client side component.
+
 
 
 ### Then Question Aries ?
@@ -116,19 +119,29 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
 
 - In Node.js we have these accessible as window's objects ex: global.console.log();
 
-# MODULE & Require('')
+# NODE.js MODULE & Require('')
 
 - Every file in a Node.js application is considered as a `MODULE`.
 - ** The `variables and functions` defined in that file or that `module` are scoped to that module, as in they are `private`.
+- Node.js includes three types of modules:
+    1. Core Modules
+    2. Local Modules
+    3. Third Party Modules
+- In order to use Node.js core or NPM modules, you first need to import it using require() function as shown below.
 
-    - Try : console.log(module)
-    - Every module has id,exports:{},parent,filename,children,paths.
-    - Anything added in exports will be added in {} empty object.
+```var module = require('module_name');```
+
+![My animated logo](./lesson5Node/public/Capture25.PNG)
+
+- Try : console.log(module)
+- Every module has id,exports:{},parent,filename,children,paths.
+- Anything added in exports will be added in {} empty object.
+  
 
     ![My animated logo](./lesson5Node/public/Capture2.PNG)
 
 
-   ## How to use UserCreated Module outside the scope?
+   ## Q. How to use UserCreated Module outside the scope?
 
     ## Solution
     
@@ -139,7 +152,7 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
     - module.exports=people; //Single method
     - module.exports= { people : people, ages : ages} ; //Multiple method
    
-    ## Example for exporting user defined single method:
+    ## Example for exporting user defined single Object:
      ```
      
     >> 11_module_1.js
@@ -159,7 +172,7 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
         This from second file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
     ```
 
-   ## Example for exporting user defined Multiple methods:
+   ## Example for exporting user defined Multiple Object:
      ```
      
     >> 11_module_1.js
@@ -171,15 +184,40 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
 
     >> 11_module_2.js
         
-        const xyz = require('./11_module_1');
-        console.log(xyz);
-        console.log(xyz.people,xyz.ages)
+        const {people,ages} = require('./11_module_1');
+        console.log(people,ages)
      
      >> OUTPUT : node 11_module_2.js
      
         This is from 1st file : Anurag,Shreya,Riya,Neal,Kimmy,Ryan
         { people: [ 'Anurag', 'Shreya', 'Riya', 'Neal', 'Kimmy', 'Ryan' ],
         ages: [ 26, 27, 22, 25, 27, 28 ] }
+    ```
+
+    ## Example for exporting user defined Function/Method:
+     ```
+     
+    >> 11_module_1.js
+     
+       module.exports = function (firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = function () { 
+        return this.firstName + ' ' + this.lastName;
+            }
+        }
+
+    >> 11_module_2.js
+        
+        var person = require('./11_module_1.js');
+        var personName = new person('James', 'Bond');
+        console.log(personName.fullName());
+     
+     >> OUTPUT : node 11_module_2.js
+     
+        C:\> node 11_module_1.js
+        James Bond
+
     ```
 
 # PATH Definers
@@ -195,12 +233,15 @@ const int = setInterval(()=>{console.log('in the interval')},1000);
 - readFile() is used to read data from file.
 - open() is used to open file & r+ is read/write format specifier for file.
 - unlink() is used to detete file.
+- mkdir() is used create folder directory
+- rmdir() is used delete folder directory
+- existsSync() is used to block the code for a very little amount of time as it's ASYNCHRONUS, and used to check if something exists.
  ## Syntax:
     
 ```
 -----------------------------------------------------------------------------------------------
 // writeFile() is used to write data to file.
-// It takes 3 parameters, filename| text to be written | CallBack function -> err
+// It takes 3 parameters, filename| text to be written | CallBack function 
 
 fs.writeFile('hello.txt','This is Anurag',(err) => {
     if(err)throw err;
@@ -210,7 +251,7 @@ fs.writeFile('hello.txt','This is Anurag',(err) => {
 })
 -----------------------------------------------------------------------------------------------
 // appendFile() is used to append data to file.
-// It takes 3 parameters, filename| text to be written | CallBack function -> err
+// It takes 3 parameters, filename| text to be written | CallBack function
 
 fs.appendFile('hello.txt',' This is second line.',(err)=>{
     if(err)throw err;
@@ -218,7 +259,7 @@ fs.appendFile('hello.txt',' This is second line.',(err)=>{
 })
 -----------------------------------------------------------------------------------------------
 // readFile() is used to read data from file.
-// It takes 2 parameters, filename | CallBack function -> err & data
+// It takes 2 parameters, filename | CallBack function 
 
 fs.readFile('hello.txt',(err, data)=>{
     if(err)throw err;
@@ -226,7 +267,7 @@ fs.readFile('hello.txt',(err, data)=>{
 })
 -----------------------------------------------------------------------------------------------
 // open() is used to open file & .
-// It takes 3 parameters, filename| r+ is read/write format specifier for file | CallBack function -> data & err
+// It takes 3 parameters, filename| r+ is read/write format specifier for file | CallBack function
 
 fs.open('hello.txt','r+',(err, data) => {
     if(err){
@@ -245,21 +286,65 @@ fs.unlink('hello.txt',(err)=>{
     else console.log("Data Deleted/Unlink successfully")
 })
 -----------------------------------------------------------------------------------------------
+// mkdir() is used access folder directory
+// It takes 2 parameters, filename | CallBack function -> err & data
+
+if(!fs.existsSync('./assests)){
+fs.mkdir('./assets',(err)=>{
+    if(err)throw err;
+    else console.log("Folder created")
+})
+} else {
+    fs.rmdir('./assets',(err)=>{
+    if(err)throw err;
+    else console.log("Folder deleted")
+})
+}
+-----------------------------------------------------------------------------------------------
 ```
 
+# STREAMS
+ - Using `Streams` we can start using the data before it's fully been read.
+ - Used for live streaming of data.
+ - Types of streams:
+    - a) createReadStream()
+        - const readStream = createReadStream('./filepath,{encoding:'utf8'})
+        - readStream.on('data',(chunk)=>{}) 
+        - `.on()` is an data event listener that takes `Data Event` and `function takes chunk of data`.
+    - b) createWriteStream()
+        - const writeStream = createWriteStream('./filepath)
+        - writeStream.write(chunk)
+        - write() is used to write the chunk of data.
 
-# HTTP module
+    - c) `pipe()` is used to pass data directly from readStream to writeStream only.
+        - readStream.pipe(writeStream)
+        - This is much easier way to write and lesser code.
+
+
+![My animated logo](./lesson5Node/public/Capture23.PNG)
+
+
+# HTTP Module || Node.js Web Server
 Node.js has multiple modules available, there are inbuild module and user created module, which help to achieve the idea of modularity and flexibility, where different components are working together.
 
 HTTP Module - inbult Module.
 
-- Here createServer() is function available in Module called HTTP module, which is responsible for creating Server.
+- const http = require('http'); is used to import `HTTP Module`.
+- Here createServer() is function available in Module called HTTP module. 
+- Which is responsible for creating Server.
+- createServer() takes a callback function and it run everytime a `Request` comes in to server and send back `Response` to user in browser.
+- listen() is used to listen the PORT.
+
 
  ## Syntax:
 
 ```
-      createServer((req,res)=>{})
+const http = require('http');
+http.createServer((req,res)=>{})
+```
 
+```
+Example
         const http = require('http')
         http.createServer((req,res)=>{
             res.write('Hello World');
@@ -267,8 +352,10 @@ HTTP Module - inbult Module.
         }).listen(3000)
 
 ```
+## Request & Response
 
-# ExpressJS Framework
+
+# ExpressJS Framework || ExpressJS Web Server
 
 Express is a simple framework build on the top of Node.js. 
 
@@ -600,3 +687,49 @@ server.listen(8070,()=>{ console.log('The Server is live on 8070')})
         - 500 means server error
 
 
+# Synchronus and Asynchronous 
+- Sync Process : STEP By STEP process and block other steps.
+- Async Process : Exceutes Parallel Process, doesn't block other steps.
+
+In a `synchronous programming model`, things happen one at a time. When you call a function that performs a long-running action, it returns only when the action has finished and it can return the result. This stops your program for the time the action takes.
+
+An `asynchronous model` allows multiple things to happen at the same time. When you start an action, your program continues to run. When the action finishes, the program is informed and gets access to the result
+
+
+##  From EVENT-QUEUE the EVENT is either passed to MAIN THREAD (CPU Task) or  THREAD-POOL(I/O Task).
+
+    - Async sends Event directly to Thread Pool from event-queue, and then callback is used to acknowledge the event processed and send to back to event-queue, and then goes to main-thread and response is sent back.
+
+    - Sync sends Event directly to be processed by Main thread and response is sent back.
+
+## When you say async task is processed , is what we call task processed in thread-pool, right?
+
+    YES
+
+## async task gets processed in thread-pool?
+
+    YES
+
+## so Sync process, ex: writeFileSync this blocks till work is done?
+
+    YES, because Sync task are directly processed by Main thread.
+
+## In current enterprised based aplication , which one is more preffered Async or sync?
+
+    Aysnc is more preffered.
+
+
+    ISSUE WITH CALLBACK
+    With Callback function we loose control over the Callback function processing. For example:
+        1. With the management of the error 
+        2. Number of times it's called isn't under control.
+        3. When it's called isn't under control.
+
+    PROMISES
+    This issue can be fixed by Promises, gives controlled uses of callback.
+        1. Does callback ones which is under control.
+        2. Handles Error more elegantly.
+
+- A new Promises takes a callback function and that callback function takes two parameters :
+  -  Resolve : Does the same thing as callback, pushing task to Event-Queue when ready. Resolve is only called once in a promise.
+  -  Reject  : This is called when there are any errors.

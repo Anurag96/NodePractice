@@ -1,5 +1,5 @@
 
-const xyz = require('./11_module_1');
+const {people,ages} = require('./11_module_1');
 
-console.log(xyz); 
-console.log(xyz.people,xyz.ages)
+ 
+console.log(people,ages)
