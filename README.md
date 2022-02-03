@@ -695,40 +695,45 @@ In a `synchronous programming model`, things happen one at a time. When you call
 
 An `asynchronous model` allows multiple things to happen at the same time. When you start an action, your program continues to run. When the action finishes, the program is informed and gets access to the result
 
+![My animated logo](./lesson5Node/public/Capture26.PNG)
 
-##  From EVENT-QUEUE the EVENT is either passed to MAIN THREAD (CPU Task) or  THREAD-POOL(I/O Task).
+ ###  From EVENT-QUEUE the EVENT is either passed to MAIN THREAD (CPU Task) or  THREAD-POOL(I/O Task).
 
-    - Async sends Event directly to Thread Pool from event-queue, and then callback is used to acknowledge the event processed and send to back to event-queue, and then goes to main-thread and response is sent back.
+    - Async sends I/O Event directly to Thread Pool from event-queue, and then callback is used to acknowledge the event processed and send to back to event-queue for CPU processing, and then goes to main-thread and response is sent back.
 
     - Sync sends Event directly to be processed by Main thread and response is sent back.
 
-## When you say async task is processed , is what we call task processed in thread-pool, right?
+![My animated logo](./lesson5Node/public/Capture27.PNG)
 
-    YES
+## Q&A
+- When you say async task is processed , is what we call task processed in thread-pool, right?
+    - YES
 
-## async task gets processed in thread-pool?
+- Async task gets processed in thread-pool?
+    - YES
 
-    YES
+- So Sync process, ex: writeFileSync this blocks till work is done?
+    - YES, because Sync task are directly processed by Main thread.
 
-## so Sync process, ex: writeFileSync this blocks till work is done?
+- In current enterprised based aplication , which one is more preffered Async or sync?
+    - Aysnc is more preffered.
 
-    YES, because Sync task are directly processed by Main thread.
+# PROMISES & CALLBACK
 
-## In current enterprised based aplication , which one is more preffered Async or sync?
+![My animated logo](./lesson5Node/public/Capture28.PNG)
 
-    Aysnc is more preffered.
-
-
-    ISSUE WITH CALLBACK
+## ISSUE WITH CALLBACK
     With Callback function we loose control over the Callback function processing. For example:
         1. With the management of the error 
         2. Number of times it's called isn't under control.
         3. When it's called isn't under control.
 
-    PROMISES
-    This issue can be fixed by Promises, gives controlled uses of callback.
-        1. Does callback ones which is under control.
-        2. Handles Error more elegantly.
+- The fix to the problem is PROMISES
+
+ ##   PROMISES
+- This issue can be fixed by Promises, gives controlled uses of callback.
+    1. Does callback ones which is under control.
+    2. Handles Error more elegantly.
 
 - A new Promises takes a callback function and that callback function takes two parameters :
   -  Resolve : Does the same thing as callback, pushing task to Event-Queue when ready. Resolve is only called once in a promise.
