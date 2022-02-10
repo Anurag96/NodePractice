@@ -39,3 +39,21 @@ fs.unlink('hello.txt',(err)=>{
 })
 
 //Comment out the unlink method to see the creation of folder 
+
+
+/**
+ * const fs = require('fs');
+
+const data = {
+    "name":"PLease enter your name",
+    "age":"Please enter your age",
+    "email":"Please enter your email",
+    "address":"Please enter your address",
+    "employment":"Please enter your employment"
+}
+fs.writeFile('content1.txt', JSON.stringify(data), function(err, data) {
+if(err)throw err
+else
+console.log('Writing file done')
+})
+ */
