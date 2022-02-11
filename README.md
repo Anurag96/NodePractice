@@ -744,3 +744,16 @@ An `asynchronous model` allows multiple things to happen at the same time. When 
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      
+```
+var getUserDetail = new Promise((resolve,reject)=>{
+    console.log('User  Details is Reteriveed')
+    resolve();
+}).then(()=>{
+    throw new Error('Something Failed')
+    console.log('Do this')
+}).catch(()=>{
+    console.log('Do that')
+}).then(()=>{
+    console.log('Do this,no matter what ever happened')
+})
+```
