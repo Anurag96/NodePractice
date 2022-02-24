@@ -1,0 +1,16 @@
+User Module
+
+1.Create a user  - GET
+2.Update user - PUT
+3.Delete Users - DELETE
+4.Report User - POST
+5.Follow - POST
+6. Unfollow user - PUT
+7.Login - POST
+8.Logout User - POST
+9.Get user details -GET
+10.Search a user - POST
+11. Get list of followers -GET
+12.ADD A BLUE TICK - POST
+13. Block a user -POST
+

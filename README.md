@@ -668,25 +668,6 @@ server.listen(8070,()=>{ console.log('The Server is live on 8070')})
 - Add method = 'POST', in form after action.
 
 
-# REST API
-
-- What is a REST API?
-    - REST : Respresentational State Transfer
-        - REST is architectural style of web.
-        - A standard set of guideline by which we can structure and create API's
-    - API : Application Programming Interface
-    - They make use of HTTP methods.
-        - GET - Used to *retrive data from the server
-        - POST - Used to *send data to the server.
-        - PUT - Used to *update data.
-        - DELETE - Used to *delete data.
-
-    - REST Properties : The make use of HTTP Status codes
-        - 200 means OK
-        - 404 means resource not found
-        - 500 means server error
-
-
 # Synchronus and Asynchronous 
 - Sync Process : STEP By STEP process and block other steps.
 - Async Process : Exceutes Parallel Process, doesn't block other steps.
@@ -744,9 +725,9 @@ An `asynchronous model` allows multiple things to happen at the same time. When 
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      
-```
+``` 
 var getUserDetail = new Promise((resolve,reject)=>{
-    console.log('User  Details is Reteriveed')
+    console.log('User  Details is Reterived')
     resolve();
 }).then(()=>{
     throw new Error('Something Failed')
@@ -756,4 +737,32 @@ var getUserDetail = new Promise((resolve,reject)=>{
 }).then(()=>{
     console.log('Do this,no matter what ever happened')
 })
+
 ```
+# REST API
+
+- What is a REST API?
+    - REST : Respresentational State Transfer
+        - REST is architectural style of web.
+        - A standard set of guideline by which we can structure and create API's
+    - API : Application Programming Interface
+    - They make use of HTTP methods.
+        - GET - Used to *retrive data from the server
+        - POST - Used to *send data to the server.
+        - PUT - Used to *update data.
+        - DELETE - Used to *delete data.
+
+    - REST Properties : The make use of HTTP Status codes
+        - 200 means OK
+        - 404 means resource not found
+        - 500 means server error
+
+# ROUTING in Express
+To be able to expose multiple routing for different request.
+
+## Request 
+    1. url/path
+    2. request body
+    3. Request headers (token)
+    4. Request method : GET,PUT,POST ,DELETE
+   
