@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userAuthRoutes = require('./user/routes/user-auth-routes');
-const bodyParser=require('body-parser');
 const mongoDb = require('./config/mongodb')
 
 const server = express();

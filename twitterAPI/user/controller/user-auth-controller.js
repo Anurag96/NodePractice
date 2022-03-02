@@ -1,9 +1,14 @@
 const userModel = require('../models/user');
+const repo = require("../repositories/user")
 
 exports.register = (req,res)=>{
 
+    //Here model is storing the data, that is used to pass the request
     const newUser = new userModel(req.body.name, req.body.email, req.body.password,req.body.gender);
-    res.send('This is register')
+    //call repository, by passing the model
+    repo.add(newUser,()=>{
+        res.send('Data is added')
+    })
    
 }
 exports.login = (req,res)=>{

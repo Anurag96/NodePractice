@@ -1,7 +1,7 @@
 User Api
 
 1.CreateUser Model - done
-2.CReate mongodb- done
+2.Create mongodb- done
 3.Connect mongodb- done
-4.Create repository to add new users to DB
-5.Call repository from the controller.
+4.Create repository to add new users to DB-done
+5.Call repository from the controller-done
