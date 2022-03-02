@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userAuthRoutes = require('./user/routes/user-auth-routes');
+const bodyParser=require('body-parser');
 const mongoDb = require('./config/mongodb')
 
 const server = express();
@@ -20,6 +21,9 @@ mongoDb.connect();
 /** The above all methods can be replace by use */
 server.use('/api/user/auth',userAuthRoutes);
 
+server.get('/',(req,res)=>{
+    res.send('Welcome to Anurag\'s Express App')
+})
 server.listen(8080,()=>{
     console.log('Port running on 8080')
 })
