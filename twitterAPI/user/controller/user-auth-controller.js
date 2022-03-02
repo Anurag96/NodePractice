@@ -1,10 +1,10 @@
-
+const userModel = require('../models/user');
 
 exports.register = (req,res)=>{
-    console.log("Resgister request")
+
+    const newUser = new userModel(req.body.name, req.body.email, req.body.password,req.body.gender);
     res.send('This is register')
-    console.log(req.body)
-    console.log(req.url)
+   
 }
 exports.login = (req,res)=>{
     console.log("Login request")
