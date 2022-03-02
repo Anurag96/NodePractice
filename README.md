@@ -766,3 +766,13 @@ To be able to expose multiple routing for different request.
     3. Request headers (token)
     4. Request method : GET,PUT,POST ,DELETE
    
+## MongoDB/No-Relational Database Structure
+- Can handle huge amount of data
+- Handle enterprise-level data
+- Handle strcture-less database, used when data structure is unknow.
+- Allows user  to store data in JSON format.
+
+Collections are like table in MOngoDB.
+Database is group of collection.
+Go to mongodb Atlas, create a new Database and collection.
+To do the stepup, in node.js, npm install mongodb.

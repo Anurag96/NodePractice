@@ -1,13 +1,18 @@
 const express = require('express');
-const server = express();
 const bodyParser = require('body-parser');
 const userAuthRoutes = require('./user/routes/user-auth-routes');
+const mongoDb = require('./config/mongodb')
 
-server.get('/',(req,res)=>{
-    res.send('Hello Anurag, to Express')
-})
-server.use(express.urlencoded({extended: true}));
+const server = express();
+
+
+// server.use(express.urlencoded({extended: true}));
 server.use(express.json());
+
+//connect to MongoDB
+mongoDb.connect();
+
+
 // server.get('/api/user/auth',userAuthRoutes);
 // server.post('/api/user/auth',userAuthRoutes);
 // server.put('/api/user/auth',userAuthRoutes);
