@@ -1,5 +1,5 @@
 const userModel = require('../models/user');
-const repo = require("../repositories/user")
+const repo = require("../repositories/user");
 
 exports.register = (req,res)=>{
 
@@ -14,8 +14,4 @@ exports.register = (req,res)=>{
 exports.login = (req,res)=>{
     console.log("Login request")
     res.send('This is login')
-}
-exports.delete = (req,res)=>{
-    console.log("Delete request")
-    res.send('This is delete')
 }

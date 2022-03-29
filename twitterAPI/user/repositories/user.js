@@ -1,4 +1,5 @@
 
+const { ObjectID, ObjectId } = require("bson");
 const db = require("../../config/mongodb")
 
 //user data - model
@@ -12,4 +13,17 @@ exports.add = (model,cb)=>{
     .then(()=>{
         cb();
     }),err=>{throw new Error(err)}
+}
+
+exports.update = (model,cb) => {
+    //get te collection
+    const collection = db.getCollection("user");
+    //define how to find the document
+    const filter = {_id:ObjectId(model._id)}
+    //define what property of the document is to be updated
+    const update = {$set: {name:model.name,password:model.password,gender:model.gender}}
+    collection.findOneAndUpdate(filter,update)
+    .then(()=>{
+        cb()
+    },err=>{console.log(err)})
 }
