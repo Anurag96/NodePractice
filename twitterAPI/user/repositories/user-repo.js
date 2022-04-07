@@ -29,3 +29,14 @@ exports.update = (model,cb) => {
         cb()
     },err=>{console.log(err)})
 }
+
+exports.getByID = (id,cb) => {
+    //get te collection
+    const collection = db.getCollection("user");
+    //find data
+    collection.findOne({_id:ObjectId(id)})
+    .then(
+        (user)=>cb(user),
+        err=>{console.log(err)}
+        )
+}
