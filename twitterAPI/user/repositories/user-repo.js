@@ -29,14 +29,16 @@ exports.update = (model,cb) => {
         cb()
     },err=>{console.log(err)})
 }
-
+exports.getUserCollection = ()=>{
+    return db.getCollection("user");
+}
 exports.getByID = (id,cb) => {
-    //get te collection
-    const collection = db.getCollection("user");
-    //find data
-    collection.findOne({_id:ObjectId(id)})
+    //Anathor way to get to collection
+    debugger;
+    this.getUserCollection().findOne({_id:ObjectId(id)})
     .then(
         (user)=>cb(user),
         err=>{console.log(err)}
         )
 }
+
