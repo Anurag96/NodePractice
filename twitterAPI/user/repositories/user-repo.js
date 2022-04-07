@@ -1,5 +1,6 @@
 
 const {ObjectId } = require("mongodb");
+//ObjectId is a function,part of mongodb to import that
 const db = require("../../config/mongodb");
 
 //user data - model
@@ -21,6 +22,7 @@ exports.update = (model,cb) => {
     //define how to find the document
     const filter = {_id:ObjectId(model._id)}
     //define what property of the document is to be updated
+    //$set operator commands mongodb to update the key with the value
     const update = {$set: {name:model.name,password:model.password,gender:model.gender}}
     collection.findOneAndUpdate(filter,update)
     .then(()=>{

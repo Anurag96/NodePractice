@@ -1,5 +1,5 @@
 const userModel = require('../models/user');
-const repo = require("../repositories/user");
+const repo = require("../repositories/user-repo");
 
 exports.register = (req,res)=>{
 
