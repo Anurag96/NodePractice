@@ -1,6 +1,6 @@
 
-const { ObjectID, ObjectId } = require("bson");
-const db = require("../../config/mongodb")
+const {ObjectId } = require("mongodb");
+const db = require("../../config/mongodb");
 
 //user data - model
 //cb- callback ro invole after data is created

@@ -20,7 +20,7 @@ mongoDb.connect();
 // server.delete('/api/user/auth',userAuthRoutes);
 /** The above all methods can be replace by use */
 server.use('/api/user/auth',userAuthRoutes);
-server.use('api/user',userRoutes);
+server.use('/api/user',userRoutes);
 // server.use((req,res) => {
     
 //     res.status(404).send("Please check your path");
