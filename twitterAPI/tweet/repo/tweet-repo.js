@@ -3,13 +3,13 @@ const {ObjectId } = require("mongodb");
 const db = require("../../config/mongodb");
 
 
-const getTweetCollection = () =>{
+exports.getTweetCollection = () =>{
     return db.getCollection("tweet");
 }
 
-exports.add = (model,cb)=>{
+exports.postTweet = (model,cb)=>{
   
-    getTweetCollection.insertOne({content:model.content,userID:model.userID})
+    getTweetCollection.insertOne({content:model.content,timestamp :model.timestamp,userID:model.userID})
     .then(()=>{
         cb();
     }),err=>{throw new Error(err)}
