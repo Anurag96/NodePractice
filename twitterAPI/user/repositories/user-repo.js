@@ -29,6 +29,8 @@ exports.update = (model,cb) => {
         cb()
     },err=>{console.log(err)})
 }
+
+
 exports.getUserCollection = ()=>{
     return db.getCollection("user");
 }
@@ -42,3 +44,10 @@ exports.getByID = (id,cb) => {
         )
 }
 
+exports.delete =(id,cb)=>{
+    this.getUserCollection().deleteOne({_id:ObjectId(id)})
+    .then(
+        (user)=>cb(user),
+        err=>{console.log(err)}
+    )
+}
